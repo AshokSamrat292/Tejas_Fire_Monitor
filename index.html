@@ -91,7 +91,7 @@
   <script>
     async function fetchData() {
       try {
-      const res = await fetch('https://tejas-backend-9qof.onrender.com/api/sensors'); ;
+      const res = await fetch('https://tejas-backend-9qof.onrender.com/api/sensors'); 
         const data = await res.json();
         document.getElementById("ldr").innerText = data.ldr;
         document.getElementById("temp").innerText = data.temp;
