@@ -1,116 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>TEJAS Fire Monitor</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #00c6ff, #0072ff);
-      margin: 0;
-      padding: 40px;
-      color: #333;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
 
-    .card {
-      background: #ffffffcc;
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      padding: 30px;
-      width: 340px;
-      text-align: center;
-      transition: 0.3s ease-in-out;
-    }
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
 
-    .card:hover {
-      transform: scale(1.02);
-    }
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
 
-    h2 {
-      margin-bottom: 25px;
-      color: #0f2027;
-    }
-
-    p {
-      font-size: 18px;
-      margin: 10px 0;
-    }
-
-    .alert {
-      color: #ff0000;
-      font-weight: bold;
-      font-size: 18px;
-      animation: blink 1s infinite;
-    }
-
-    .safe {
-      color: #28a745;
-      font-weight: bold;
-      font-size: 18px;
-    }
-
-    @keyframes blink {
-      0% { opacity: 1; }
-      50% { opacity: 0.3; }
-      100% { opacity: 1; }
-    }
-
-    .refresh-btn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      border: none;
-      background: #007bff;
-      color: white;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s ease-in-out;
-    }
-
-    .refresh-btn:hover {
-      background: #0056b3;
-    }
-  </style>
-</head>
-<body>
-  <div class="card">
-    <h2>🔥 TEJAS Dashboard</h2>
-    <p><strong>LDR:</strong> <span id="ldr">--</span></p>
-    <p><strong>Temperature:</strong> <span id="temp">--</span>°C</p>
-    <p><strong>Smoke Level:</strong> <span id="smoke">--</span></p>
-    <p><strong>Status:</strong> <span id="status">--</span></p>
-    <p><strong>Last Updated:</strong> <span id="time">--</span></p>
-    <button class="refresh-btn" onclick="fetchData()">🔄 Refresh Now</button>
-  </div>
-
-  <script>
-    async function fetchData() {
-      try {
-      const res = await fetch('https://tejas-backend1.onrender.com/api/sensors');
-        const data = await res.json();
-        document.getElementById("ldr").innerText = data.ldr;
-        document.getElementById("temp").innerText = data.temp;
-        document.getElementById("smoke").innerText = data.smoke;
-        document.getElementById("time").innerText = data.timestamp;
-        if (data.fireDetected) {
-          document.getElementById("status").innerHTML = '<span class="alert">🔥 Fire Detected</span>';
-        } else {
-          document.getElementById("status").innerHTML = '<span class="safe">✅ Safe</span>';
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        alert("Failed to fetch data from backend.");
-      }
-    }
-
-    // Fetch data every 3 seconds
-    setInterval(fetchData, 3000);
-    fetchData();
-  </script>
-</body>
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
 </html>
